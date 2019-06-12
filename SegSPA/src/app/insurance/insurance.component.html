@@ -1,3 +1,59 @@
-<p *ngFor="let insurance of insurances">
- {{insurance.id}} , {{insurance.policyNumber}} , {{insurance.cpfcnpj}}, {{insurance.idAuto}} , {{insurance.prizeValue}}
-</p>
+<div class="jumbotron">
+  <h2>Apolices Registradas</h2>
+  <table class="table table-striped table-bordered">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Apolice</th>
+        <th>CPF/CNPJ</th>
+        <th>Placa </th>
+        <th>Valor</th>
+      </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let insurance of insurances" (click)="clickInsurance(insurance)">
+      <td>{{insurance.id}}</td>
+      <td>{{insurance.policyNumber}}</td>
+      <td>{{insurance.cpfcnpj}}</td>
+      <td>{{insurance.idAuto}}</td>
+      <td>{{insurance.prizeValue}}</td>
+    
+  </tr>
+</tbody>
+</table>
+  
+   
+</div>
+
+<div class="jumbotron">
+    <h2>Registrar nova apolice</h2>
+
+    <form>
+        <div class="form-group">
+            <label>Id</label>
+            <input disabled='true' name="id" [(ngModel)]="model.id" type="text" class="form-control">
+           
+          </div>
+        <div class="form-group">
+          <label>Apolice</label>
+          <input required name="policyNumber" [(ngModel)]="model.policyNumber" type="text" class="form-control">
+         
+        </div>
+        <div class="form-group">
+            <label>CPFCNPJ</label>
+            <input required name="cpfcnpj" [(ngModel)]="model.cpfcnpj" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Placa</label>
+            <input required name="idAuto" [(ngModel)]="model.idAuto" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Valor</label>
+            <input required [(ngModel)]="model.prizeValue" name="prizeValue" type="number" class="form-control">
+        </div>
+        <button type="submit" (click)="createInsurance()" class="btn btn-primary">Criar</button>
+        <button type="submit" (click)="updateInsurance()" class="btn btn-warning">Editar</button>
+        <button type="submit" (click)="removeInsurance()" class="btn btn-danger">Remover</button>
+        <button type="submit" (click)="clear()" class="btn btn-dark">Limpar</button>
+      </form>
+</div>

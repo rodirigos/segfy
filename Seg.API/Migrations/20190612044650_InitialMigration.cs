@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Seg.API.Migrations
 {
@@ -11,7 +12,7 @@ namespace Seg.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PolicyNumber = table.Column<string>(nullable: true),
                     CPFCNPJ = table.Column<string>(nullable: true),
                     IdAuto = table.Column<string>(nullable: true),
